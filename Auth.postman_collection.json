@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "6e104aa1-4dfa-459e-85dd-0da6bbb7a346",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "client_credentials",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "weatherApi.read",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "weatherApi",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "ProCodeGuide",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7070/connect/token",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7070",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authorization_code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "oidcMVCApp",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "ProCodeGuide",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "031C4A83A423E1CA98D51DE6F5D87853D7A90EE1D9BC363C20B7EDC74E4B7F3D",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://localhost:7115/Auth/callback",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7070/connect/token",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7070",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "oidcMVCApp",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "ProCodeGuide",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "8FCA89C49125D5E787DFC70149BDD301907AA014A79821B606B3A816ECB3F3A0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:7070/connect/token",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7070",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authorize [do it on browser]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7070/connect/authorize?response_type=code&client_id=oidcMVCApp&redirect_uri=https://localhost:7115/Auth/callback&scope=openid profile email offline_access role weatherApi.read&state=999",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"connect",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "client_id",
+							"value": "oidcMVCApp"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://localhost:7115/Auth/callback"
+						},
+						{
+							"key": "scope",
+							"value": "openid profile email offline_access role weatherApi.read"
+						},
+						{
+							"key": "state",
+							"value": "999"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
